@@ -6,15 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="euroka-server" />
+        <module name="eureka-server" />
         <module name="book-store" />
         <module name="library" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="euroka-server" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="book-store" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="euroka-server" options="-parameters" />
       <module name="library" options="-parameters" />
     </option>
