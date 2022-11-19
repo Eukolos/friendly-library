@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   mongodb:
+    container_name: mongo_container
     image: mongo:latest
     restart: always
     ports:
@@ -12,8 +13,8 @@ services:
     container_name: postgres_container
     image: postgres
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: read
       PGDATA: /data/postgres
     volumes:

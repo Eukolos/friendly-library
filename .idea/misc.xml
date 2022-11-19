@@ -5,8 +5,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/book-store/pom.xml" />
-        <option value="$PROJECT_DIR$/euroka-server/pom.xml" />
         <option value="$PROJECT_DIR$/library/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
       </list>
     </option>
   </component>
