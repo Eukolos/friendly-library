@@ -1,6 +1,5 @@
 package com.eukolos.library.controller;
 
-import com.eukolos.library.dto.Borrowing;
 import com.eukolos.library.model.Borrow;
 import com.eukolos.library.service.BorrowBookService;
 import org.springframework.web.bind.annotation.GetMapping;

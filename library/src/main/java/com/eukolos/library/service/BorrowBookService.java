@@ -6,7 +6,6 @@ import com.eukolos.library.model.Book;
 import com.eukolos.library.model.Borrow;
 import com.eukolos.library.repository.BookRepository;
 import com.eukolos.library.repository.BorrowBookRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,9 +21,8 @@ public class BorrowBookService {
     }
 
     public Borrow borrowing(String isbn){
-        ResponseEntity<BookDto> bookDto = bookStoreClient.borrowOneBook(isbn);
-        Book book = bookRepository.save(Book.convertFromClient(bookDto.getBody()));
-
+        BookDto bookDto = bookStoreClient.borrowOneBook(isbn).getBody();
+        Book book = bookRepository.save(Book.convertFromClient(bookDto));
         return repository.save(new Borrow(book));
     }
 
