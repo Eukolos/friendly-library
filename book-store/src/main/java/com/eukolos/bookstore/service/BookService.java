@@ -37,9 +37,12 @@ public class BookService {
                 bookDto.isbn(),
                 bookDto.amount()
         );
-
-
         return BookDto.convertToBookDto(repository.save(save));
+    }
+
+    public BookDto borrowOneBook(String isbn){
+        Book book = repository.findByIsbn(isbn);
+        return BookDto.convertToBookDto(repository.save(Book.decAmount(book)));
     }
 
 

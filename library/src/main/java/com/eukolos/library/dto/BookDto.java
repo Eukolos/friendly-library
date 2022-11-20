@@ -1,6 +1,7 @@
 package com.eukolos.library.dto;
 
 
+
 public record BookDto(
         String title,
         int bookYear,
@@ -9,5 +10,6 @@ public record BookDto(
         Double price,
         String isbn,
         Integer amount
+){
 
-){}
+}

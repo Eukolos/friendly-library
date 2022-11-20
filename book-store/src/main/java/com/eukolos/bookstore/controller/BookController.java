@@ -36,4 +36,9 @@ public class BookController {
     public BookDto updateBook(@RequestBody BookDto bookDto, @PathVariable String isbn){
         return service.updateBook(isbn,bookDto);
     }
+
+    @PutMapping("/borrow/{isbn}")
+    public BookDto borrowOneBook(@PathVariable String isbn){
+        return service.borrowOneBook(isbn);
+    }
 }

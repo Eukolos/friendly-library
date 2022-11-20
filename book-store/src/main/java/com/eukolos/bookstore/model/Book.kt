@@ -14,4 +14,20 @@ data class Book @JvmOverloads constructor (
     val price: Double,
     val isbn: String,
     val amount: Int
-)
+) {
+    companion object {
+        @JvmStatic
+        fun decAmount(from: Book): Book {
+            return Book(
+                from.id,
+                from.title,
+                from.bookYear,
+                from.author,
+                from.pressName,
+                from.price,
+                from.isbn,
+                from.amount.dec()
+            )
+        }
+    }
+}
