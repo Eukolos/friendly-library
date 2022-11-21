@@ -6,10 +6,10 @@ import javax.persistence.*
 @Entity
 @Table
 data class Member @JvmOverloads constructor (
-    @Id
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid2")
-    @Column(length = 36, nullable = false, updatable = false)
+        @Id
+        @GenericGenerator(name = "uuid2", strategy = "uuid2")
+        @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid2")
+        @Column(length = 36, nullable = false, updatable = false)
         val id: String?= null,
         val email: String,
         val password: String,
@@ -17,5 +17,5 @@ data class Member @JvmOverloads constructor (
         val firstName: String,
         val lastName: String,
         @OneToMany
-        val borrows: List<Borrow>?=null
+        val borrows: List<Borrow>?= emptyList()
     )

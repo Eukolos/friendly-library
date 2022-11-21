@@ -1,6 +1,6 @@
 package com.eukolos.library.model
 
-import com.eukolos.library.dto.BookDto
+import com.eukolos.library.dto.ClientBookDto
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.GenericGenerator
 import javax.persistence.*
@@ -25,7 +25,7 @@ data class Book @JvmOverloads constructor(
 ){
     companion object {
         @JvmStatic
-        fun convertFromClient(from: BookDto): Book {
+        fun convertFromClient(from: ClientBookDto): Book {
             return Book(
                 "",
                 from.title,

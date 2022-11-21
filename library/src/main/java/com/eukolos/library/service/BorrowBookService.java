@@ -1,7 +1,8 @@
 package com.eukolos.library.service;
 
 import com.eukolos.library.client.BookStoreClient;
-import com.eukolos.library.dto.BookDto;
+import com.eukolos.library.dto.BorrowDto;
+import com.eukolos.library.dto.ClientBookDto;
 import com.eukolos.library.model.Book;
 import com.eukolos.library.model.Borrow;
 import com.eukolos.library.repository.BookRepository;
@@ -21,8 +22,8 @@ public class BorrowBookService {
     }
 
     public Borrow borrowing(String isbn){
-        BookDto bookDto = bookStoreClient.borrowOneBook(isbn).getBody();
-        Book book = bookRepository.save(Book.convertFromClient(bookDto));
+        ClientBookDto clientBookDto = bookStoreClient.borrowOneBook(isbn).getBody();
+        Book book = bookRepository.save(Book.convertFromClient(clientBookDto));
         return repository.save(new Borrow(book));
     }
 

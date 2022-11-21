@@ -1,9 +1,6 @@
 package com.eukolos.library.controller;
 
-import com.eukolos.library.dto.LibrarianCreateRequest;
-import com.eukolos.library.dto.LibrarianDto;
-import com.eukolos.library.dto.MemberCreateRequest;
-import com.eukolos.library.dto.MemberDto;
+import com.eukolos.library.dto.*;
 import com.eukolos.library.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +28,11 @@ public class MemberController {
     @GetMapping("/email")
     public MemberDto findByEmail(@RequestParam String email){
         return service.findByEmail(email);
+    }
+
+    @PostMapping("/borrow")
+    @ResponseStatus(HttpStatus.CREATED)
+    public MemberDto borrowBook(@RequestBody BorrowRequest borrowRequest){
+        return service.borrowBook(borrowRequest);
     }
 }

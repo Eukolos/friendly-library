@@ -26,7 +26,7 @@ public class BookController {
         return service.findByIsbn(isbn);
     }
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BookDto addBook(@RequestBody BookDto bookDto){
         return service.addBook(bookDto);

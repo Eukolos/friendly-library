@@ -20,6 +20,6 @@ public record LibrarianDto(
     }
 
     public static List<LibrarianDto> convertToLibrarianListDto(List<Librarian> librarians){
-        return librarians.stream().map(librarian -> LibrarianDto.convertToLibrarianDto(librarian)).toList();
+        return librarians.stream().map(LibrarianDto::convertToLibrarianDto).toList();
     }
 }

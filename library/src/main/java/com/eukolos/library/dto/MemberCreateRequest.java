@@ -15,8 +15,7 @@ public record MemberCreateRequest(
                 request.password,
                 request.phone,
                 request.firstName,
-                request.lastName
-        );
+                request.lastName);
     }
 
 }
