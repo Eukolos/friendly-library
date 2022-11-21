@@ -26,7 +26,7 @@ public class BookController {
         return service.findByIsbn(isbn);
     }
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BookDto addBook(@RequestBody BookDto bookDto){
         return service.addBook(bookDto);
@@ -35,5 +35,10 @@ public class BookController {
     @PutMapping("/{isbn}")
     public BookDto updateBook(@RequestBody BookDto bookDto, @PathVariable String isbn){
         return service.updateBook(isbn,bookDto);
+    }
+
+    @PutMapping("/borrow/{isbn}")
+    public BookDto borrowOneBook(@PathVariable String isbn){
+        return service.borrowOneBook(isbn);
     }
 }
