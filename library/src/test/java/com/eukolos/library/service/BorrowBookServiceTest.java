@@ -2,8 +2,6 @@ package com.eukolos.library.service;
 
 import com.eukolos.library.client.BookStoreClient;
 import com.eukolos.library.config.ContainersEnvironment;
-import com.eukolos.library.dto.BookDto;
-import com.eukolos.library.dto.BorrowDto;
 import com.eukolos.library.dto.ClientBookDto;
 import com.eukolos.library.model.Book;
 import com.eukolos.library.model.Borrow;
@@ -14,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
@@ -66,7 +65,9 @@ public class BorrowBookServiceTest extends ContainersEnvironment {
         String request = "123456";
 
         //when
-        when(bookStoreClient.borrowOneBook("123456").getBody()).thenReturn(clientBookDto);
+
+        when(bookStoreClient.borrowOneBook("123456")).thenReturn(ResponseEntity.ok(clientBookDto));
+        when(bookRepository.save(book)).thenReturn(book);
         when(borrowBookRepository.save(any(Borrow.class))).thenReturn(responseFromRepo);
 
 
