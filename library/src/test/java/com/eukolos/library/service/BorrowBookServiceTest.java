@@ -67,7 +67,7 @@ public class BorrowBookServiceTest extends ContainersEnvironment {
         //when
 
         when(bookStoreClient.borrowOneBook("123456")).thenReturn(ResponseEntity.ok(clientBookDto));
-        when(bookRepository.save(book)).thenReturn(book);
+        when(bookRepository.save(any(Book.class))).thenReturn(book);
         when(borrowBookRepository.save(any(Borrow.class))).thenReturn(responseFromRepo);
 
 
