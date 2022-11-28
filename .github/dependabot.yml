@@ -7,20 +7,20 @@ updates:
   - package-ecosystem: maven
     directory: /book-store
     schedule:
-      interval: weekly
-      time: 04:00
+      interval: "weekly"
+      time: "04:00"
     open-pull-requests-limit: 10
   - package-ecosystem: maven
     directory: /eureka-service
     schedule:
-      interval: weekly
-      time: 04:00
+      interval: "weekly"
+      time: "04:00"
     open-pull-requests-limit: 10
   - package-ecosystem: maven
     directory: /library
     schedule:
-      interval: weekly
-      time: 04:00
+      interval: "weekly"
+      time: "04:00"
     open-pull-requests-limit: 10
 
 
