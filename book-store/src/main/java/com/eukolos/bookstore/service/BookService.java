@@ -1,11 +1,13 @@
 package com.eukolos.bookstore.service;
 
 import com.eukolos.bookstore.dto.BookDto;
+import com.eukolos.bookstore.exception.NotFoundBookException;
 import com.eukolos.bookstore.model.Book;
 import com.eukolos.bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -20,13 +22,18 @@ public class BookService {
     }
 
     public BookDto findByIsbn(String isbn){
-        return BookDto.convertToBookDto(repository.findByIsbn(isbn));
+        Book book = repository.findByIsbn(isbn)
+                .orElseThrow(() -> new NotFoundBookException("couldnt find book with this isbn"));
+        return BookDto.convertToBookDto(book);
+
+
     }
 
     public List<BookDto> bookList(){ return BookDto.convertAllToBookDto(repository.findAll()); }
 
     public BookDto updateBook(String isbn, BookDto bookDto){
-        Book book = repository.findByIsbn(isbn);
+        Book book = repository.findByIsbn(isbn)
+                .orElseThrow(() -> new NotFoundBookException("couldnt find book with this isbn"));
         Book save = new Book(
                 book.getId(),
                 bookDto.title(),
@@ -41,7 +48,8 @@ public class BookService {
     }
 
     public BookDto borrowOneBook(String isbn){
-        Book book = repository.findByIsbn(isbn);
+        Book book = repository.findByIsbn(isbn)
+                .orElseThrow(() -> new NotFoundBookException("couldnt find book with this isbn"));
         return BookDto.convertToBookDto(repository.save(Book.decAmount(book)));
     }
 

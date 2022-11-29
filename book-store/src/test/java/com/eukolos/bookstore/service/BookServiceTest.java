@@ -12,6 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -94,7 +95,7 @@ class BookServiceTest {
         String isbn = "123456";
 
         //when
-        when(repository.findByIsbn(isbn)).thenReturn(responseFromRepo);
+        when(repository.findByIsbn(isbn)).thenReturn(Optional.of(responseFromRepo));
 
         BookDto response = service.findByIsbn(isbn);
         assertEquals(2000, response.bookYear());
@@ -172,7 +173,7 @@ class BookServiceTest {
 
 
         //when
-        when(repository.findByIsbn(isbn)).thenReturn(existsBook);
+        when(repository.findByIsbn(isbn)).thenReturn(Optional.of(existsBook));
         when(repository.save(updatedBook)).thenReturn(updatedBook);
 
         BookDto response = service.updateBook(existsBook.getIsbn(), updateRequest);
