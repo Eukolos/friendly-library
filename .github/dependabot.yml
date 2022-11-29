@@ -2,18 +2,26 @@
 # package ecosystems to update and where the package manifests are located.
 # Please see the documentation for all configuration options:
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
+  - package-ecosystem: maven
+    directory: /book-store
+    schedule:
+      interval: "weekly"
+      time: "04:00"
+    open-pull-requests-limit: 10
+  - package-ecosystem: maven
+    directory: /eureka-service
+    schedule:
+      interval: "weekly"
+      time: "04:00"
+    open-pull-requests-limit: 10
+  - package-ecosystem: maven
+    directory: /library
+    schedule:
+      interval: "weekly"
+      time: "04:00"
+    open-pull-requests-limit: 10
 
-- package-ecosystem: maven
-  directory: "/"
-  schedule:
-    interval: "weekly"
-    time: '04:00'
-  open-pull-requests-limit: 10
 
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-    interval: "weekly"
+
