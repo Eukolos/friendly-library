@@ -1,7 +1,7 @@
 package com.eukolos.bookstore.controller;
 
 import com.eukolos.bookstore.controller.errors.BookAppError;
-import com.eukolos.bookstore.exception.NotFoundBookException;
+import com.eukolos.bookstore.exception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +18,9 @@ public class BookControllerAdvice {
     @Value("${bookstore.api.version}")
     private String currentApiVersion;
 
-    @ExceptionHandler(NotFoundBookException.class)
+    @ExceptionHandler(BookNotFoundException.class)
     public ResponseEntity<BookAppError> handleNonExistingBook(HttpServletRequest request,
-                                                              NotFoundBookException ex) {
+                                                              BookNotFoundException ex) {
         final BookAppError error = new BookAppError(
                 currentApiVersion,
                 ex.getErrorCode(),

@@ -2,8 +2,8 @@ package com.eukolos.bookstore.exception;
 
 import com.eukolos.bookstore.controller.errors.ErrorCode;
 
-public class NotFoundBookException extends RuntimeException implements ErrorCode {
-    public NotFoundBookException(final String message) {
+public class BookNotFoundException extends RuntimeException implements ErrorCode {
+    public BookNotFoundException(final String message) {
 
         super(message);
     }
