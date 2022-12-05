@@ -2,24 +2,24 @@ package com.eukolos.library.dto;
 
 
 import com.eukolos.library.model.Borrow;
-import com.eukolos.library.model.Librarian;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public record BorrowDto(
         String id,
         BookDto book,
-        LocalDate createdDate,
-        LocalDate expireDate
+        String createdDate,
+        String expireDate,
+        String member
 
 )  {
    public static BorrowDto convertToBorrowDto(Borrow borrow){
       return new BorrowDto(
               borrow.getId(),
               BookDto.convertToBookDtoDto(borrow.getBook()),
-              borrow.getCreatedDate(),
-              borrow.getExpireDate()
+              borrow.getCreatedDate().toString(),
+              borrow.getExpireDate().toString(),
+              borrow.getMember().getEmail()
       );
    }
 

@@ -16,6 +16,6 @@ data class Member @JvmOverloads constructor (
         val phone: String,
         val firstName: String,
         val lastName: String,
-        @OneToMany
+        @OneToMany(mappedBy = "member")
         val borrows: List<Borrow>?= emptyList()
     )

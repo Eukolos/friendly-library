@@ -1,6 +1,7 @@
 package com.eukolos.library.model
 
 import org.hibernate.annotations.CascadeType
+import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.GenericGenerator
 import org.springframework.data.annotation.CreatedDate
 import java.time.LocalDate
@@ -20,5 +21,8 @@ data class Borrow @JvmOverloads constructor (
 
     val createdDate: LocalDate = LocalDate.now(),
 
-    val expireDate: LocalDate?=null
+    val expireDate: LocalDate = LocalDate.now().plusDays(30),
+
+    @ManyToOne
+    val member: Member?
     )
